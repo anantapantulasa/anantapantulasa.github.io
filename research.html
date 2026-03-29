@@ -130,24 +130,6 @@
             font-weight: 300;
         }
 
-        .item-desc ul {
-            list-style: none;
-            margin-top: 0.5rem;
-        }
-
-        .item-desc li {
-            position: relative;
-            padding-left: 1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .item-desc li::before {
-            content: '·';
-            position: absolute;
-            left: 0;
-            color: var(--text-dim);
-        }
-
         .tag {
             display: inline-block;
             font-size: 0.65rem;
@@ -241,7 +223,7 @@
 
         <header>
             <h1>Research</h1>
-            <p class="subtitle">Complex systems, statistics, and scientific inquiry</p>
+            <p class="subtitle">Statistical modeling, complex systems, and scientific inquiry</p>
         </header>
 
         <section>
@@ -254,11 +236,8 @@
                 </div>
                 <div class="item-org">University of Pennsylvania</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Applied sparse system identification to recover governing ODEs from noisy biological time-series data</li>
-                        <li>Using dynamic systems theory to model the spreading of infected proteins throughout the brain in Alzheimer's disease</li>
-                        <li>Developing and validating ODE-based models using mice brain data</li>
-                    </ul>
+                    Modeling how misfolded proteins spread through the brain in Alzheimer's disease. Using sparse system identification to recover differential equations from noisy time-series data, then validating models against mice brain imaging.
+                    <br><br>
                     <span class="tag">Dynamic Systems</span>
                     <span class="tag">ODE</span>
                     <span class="tag">Sparse ID</span>
@@ -273,11 +252,8 @@
                 </div>
                 <div class="item-org">Wharton AI & Analytics Initiative</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Optimized a Bayesian hierarchical model (Meridian) for Google Pixel by tuning priors and spline knots to stabilize convergence</li>
-                        <li>Tested model stability using R-hat statistics and residual diagnostics</li>
-                        <li>Presented findings to Pixel's marketing team</li>
-                    </ul>
+                    Improved Google Pixel's marketing mix model (Meridian) by tuning Bayesian priors and spline parameters. Diagnosed convergence issues using R-hat statistics and presented recommendations to Pixel's marketing team.
+                    <br><br>
                     <span class="tag">Bayesian</span>
                     <span class="tag">Marketing Mix</span>
                     <span class="tag">R</span>
@@ -295,13 +271,9 @@
                 </div>
                 <div class="item-org">Rutgers University — Dr. Lisa Rodenburg</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Developed unsupervised ML models to analyze water contaminants in NY/NJ Superfund sites</li>
-                        <li>Built Positive Matrix Factorization and stepwise regression models to determine contaminant sources</li>
-                        <li>Created NNLS-based signal metric to quantify transformation effects</li>
-                        <li>Methods adopted by Rutgers and the EPA for ongoing use</li>
-                    </ul>
-                    <a href="https://youtu.be/qYruNAgnu6c" target="_blank">Conference presentation →</a>
+                    Tracked pollution sources in NY/NJ Superfund sites using factor analysis. Built models to decompose contamination signals into their original sources—methods later adopted by the EPA.
+                    <br><br>
+                    <a href="https://youtu.be/qYruNAgnu6c?t=19" target="_blank">Conference presentation →</a>
                     <br>
                     <span class="tag">PMF</span>
                     <span class="tag">Random Forest</span>
@@ -316,12 +288,10 @@
                 </div>
                 <div class="item-org">Auburn University — Dr. Alan Wilson</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Built a random-effects meta-analysis model in R using 2K+ heterogeneous field experiments</li>
-                        <li>Imputed missing variance with random forest, stress-tested robustness under extreme heterogeneity (I² = 90%)</li>
-                        <li>First-author on two publications</li>
-                        <li>1st Place Oral Presenter Award at World Aquaculture Society Conference</li>
-                    </ul>
+                    Aggregated 2,000+ field experiments to test whether algae treatments actually work (most don't). Built random-effects models to handle extreme heterogeneity across studies. First-author on two publications.
+                    <br><br>
+                    <a href="https://www.youtube.com/watch?v=TFtwjZog750" target="_blank">Conference presentation →</a>
+                    <br>
                     <span class="tag">Meta-Analysis</span>
                     <span class="tag">R</span>
                     <span class="tag">Field Research</span>
@@ -335,12 +305,10 @@
                 </div>
                 <div class="item-org">Oakland University — Dr. Eddie Cheng & Dr. Laszlo Liptak</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Modeled fault tolerance of m-ary n-dimensional hypercubes for supercomputer design</li>
-                        <li>Derived structural stability thresholds under node deletions</li>
-                        <li>First-author publication in Springer Proceedings</li>
-                        <li>Presented at 52nd SE International Conference on Combinatorics, Graph Theory and Computing</li>
-                    </ul>
+                    Studied how hypercube networks (used in supercomputers) fail when nodes are removed. Derived thresholds for when the network structure collapses. First-author publication in Springer.
+                    <br><br>
+                    <a href="https://www.youtube.com/watch?v=OGxMSjmcMqo&t=26s" target="_blank">Conference presentation →</a>
+                    <br>
                     <span class="tag">Graph Theory</span>
                     <span class="tag">Combinatorics</span>
                     <span class="tag">Networks</span>
@@ -354,11 +322,9 @@
                 </div>
                 <div class="item-org">Garcia Research Scholars, Stony Brook University — Dr. Aaron Sloutski</div>
                 <div class="item-desc">
-                    <ul>
-                        <li>Developed and bioprinted hydrogels for tooth disinfection treatment</li>
-                        <li>Calculated diffusion rates of crosslinking agents and photoinitiators</li>
-                        <li>Evaluated polymer degradation under UV irradiation using t-tests with rheological results</li>
-                    </ul>
+                    Developed bioprinted hydrogels for dental treatment. Modeled diffusion rates of crosslinking agents and tested polymer degradation under UV exposure.
+                    <br><br>
+                    <a href="https://www.youtube.com/watch?v=IcpdJb5V8XM" target="_blank">Presentation →</a>
                 </div>
             </div>
         </section>
@@ -385,6 +351,20 @@
                 <div class="pub-authors"><strong>Anantapantula, S.</strong>, et al.</div>
                 <div class="pub-venue">Harmful Algae, 142, 102800 (2025)</div>
                 <a href="https://doi.org/10.1016/j.hal.2025.102800" target="_blank" class="pub-link">doi.org/10.1016/j.hal.2025.102800 →</a>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Impacts of National and Local Chapters of 500 Women Scientists</div>
+                <div class="pub-authors">Dapkey, T., <strong>Anantapantula, S.</strong>, McBride, J.</div>
+                <div class="pub-venue">Technology and Culture (2025)</div>
+                <a href="https://doi.org/10.1353/tap.2025.a977043" target="_blank" class="pub-link">doi.org/10.1353/tap.2025.a977043 →</a>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Fueling Controversy: Ethical Implications and Principles of Fossil Fuel Subsidy Reform</div>
+                <div class="pub-authors"><strong>Anantapantula, S.</strong>, Chen, R., Shin, M., Wang, R.</div>
+                <div class="pub-venue">Journal of Ethics in Scientific and Technological Innovations, Vol. 2 (2024)</div>
+                <a href="https://bpb-us-e1.wpmucdn.com/you.stonybrook.edu/dist/d/5771/files/2024/03/Journal-of-Ethics-in-Scientific-and-Technological-Innovations-Volume-2-2024-9bf64638eadb38c4.pdf" target="_blank" class="pub-link">PDF →</a>
             </div>
 
             <div class="publication">
