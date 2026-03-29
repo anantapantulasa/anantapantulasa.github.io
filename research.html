@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Saranya Anantapantula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e8e8e8;
+            --text-dim: #6a6a6a;
+            --accent: #ffffff;
+            --border: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 3rem;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .back:hover {
+            color: var(--text);
+        }
+
+        header {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.2s; }
+        section:nth-of-type(2) { animation-delay: 0.3s; }
+        section:nth-of-type(3) { animation-delay: 0.4s; }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item {
+            margin-bottom: 2.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .item-meta {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .item-org {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 300;
+        }
+
+        .item-desc ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .item-desc li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .item-desc li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            background: #1a1a1a;
+            border-radius: 2px;
+            margin-right: 0.4rem;
+            margin-top: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .publication {
+            padding: 1rem;
+            background: #0f0f0f;
+            border-left: 2px solid #2a2a2a;
+            margin-bottom: 1.5rem;
+        }
+
+        .pub-title {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .pub-authors {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .pub-venue {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .pub-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .item-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">← back</a>
+
+        <header>
+            <h1>Research</h1>
+            <p class="subtitle">Complex systems, statistics, and scientific inquiry</p>
+        </header>
+
+        <section>
+            <div class="section-title">Current</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Complex Systems Lab</span>
+                    <span class="item-meta">Jan 2026 – Present</span>
+                </div>
+                <div class="item-org">University of Pennsylvania</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Applied sparse system identification to recover governing ODEs from noisy biological time-series data</li>
+                        <li>Using dynamic systems theory to model the spreading of infected proteins throughout the brain in Alzheimer's disease</li>
+                        <li>Developing and validating ODE-based models using mice brain data</li>
+                    </ul>
+                    <span class="tag">Dynamic Systems</span>
+                    <span class="tag">ODE</span>
+                    <span class="tag">Sparse ID</span>
+                    <span class="tag">Neuroscience</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Analyst for Google</span>
+                    <span class="item-meta">Jan 2025 – May 2025</span>
+                </div>
+                <div class="item-org">Wharton AI & Analytics Initiative</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Optimized a Bayesian hierarchical model (Meridian) for Google Pixel by tuning priors and spline knots to stabilize convergence</li>
+                        <li>Tested model stability using R-hat statistics and residual diagnostics</li>
+                        <li>Presented findings to Pixel's marketing team</li>
+                    </ul>
+                    <span class="tag">Bayesian</span>
+                    <span class="tag">Marketing Mix</span>
+                    <span class="tag">R</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Past Research</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Environmental Toxicology</span>
+                    <span class="item-meta">2020 – 2023</span>
+                </div>
+                <div class="item-org">Rutgers University — Dr. Lisa Rodenburg</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Developed unsupervised ML models to analyze water contaminants in NY/NJ Superfund sites</li>
+                        <li>Built Positive Matrix Factorization and stepwise regression models to determine contaminant sources</li>
+                        <li>Created NNLS-based signal metric to quantify transformation effects</li>
+                        <li>Methods adopted by Rutgers and the EPA for ongoing use</li>
+                    </ul>
+                    <a href="https://youtu.be/qYruNAgnu6c" target="_blank">Conference presentation →</a>
+                    <br>
+                    <span class="tag">PMF</span>
+                    <span class="tag">Random Forest</span>
+                    <span class="tag">ArcGIS</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Meta-Analysis & Field Experiments</span>
+                    <span class="item-meta">2020 – 2023</span>
+                </div>
+                <div class="item-org">Auburn University — Dr. Alan Wilson</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Built a random-effects meta-analysis model in R using 2K+ heterogeneous field experiments</li>
+                        <li>Imputed missing variance with random forest, stress-tested robustness under extreme heterogeneity (I² = 90%)</li>
+                        <li>First-author on two publications</li>
+                        <li>1st Place Oral Presenter Award at World Aquaculture Society Conference</li>
+                    </ul>
+                    <span class="tag">Meta-Analysis</span>
+                    <span class="tag">R</span>
+                    <span class="tag">Field Research</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Graph Theory & Network Fault Tolerance</span>
+                    <span class="item-meta">2019 – 2022</span>
+                </div>
+                <div class="item-org">Oakland University — Dr. Eddie Cheng & Dr. Laszlo Liptak</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Modeled fault tolerance of m-ary n-dimensional hypercubes for supercomputer design</li>
+                        <li>Derived structural stability thresholds under node deletions</li>
+                        <li>First-author publication in Springer Proceedings</li>
+                        <li>Presented at 52nd SE International Conference on Combinatorics, Graph Theory and Computing</li>
+                    </ul>
+                    <span class="tag">Graph Theory</span>
+                    <span class="tag">Combinatorics</span>
+                    <span class="tag">Networks</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Materials Science & Bioprinting</span>
+                    <span class="item-meta">2023</span>
+                </div>
+                <div class="item-org">Garcia Research Scholars, Stony Brook University — Dr. Aaron Sloutski</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Developed and bioprinted hydrogels for tooth disinfection treatment</li>
+                        <li>Calculated diffusion rates of crosslinking agents and photoinitiators</li>
+                        <li>Evaluated polymer degradation under UV irradiation using t-tests with rheological results</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Publications</div>
+
+            <div class="publication">
+                <div class="pub-title">Most treatments to control freshwater algal blooms are not effective: Meta-analysis of field experiments</div>
+                <div class="pub-authors"><strong>Anantapantula, S. S.</strong>, & Wilson, A. E.</div>
+                <div class="pub-venue">Water Research, 243, 120342 (2023)</div>
+                <a href="https://doi.org/10.1016/j.watres.2023.120342" target="_blank" class="pub-link">doi.org/10.1016/j.watres.2023.120342 →</a>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Structural Properties of m-Ary n-Dimensional Hypercubes</div>
+                <div class="pub-authors"><strong>Anantapantula, S. S.</strong>, Cheng, E., Liptak, L.</div>
+                <div class="pub-venue">Combinatorics, Graph Theory and Computing. Springer Proceedings in Mathematics & Statistics, vol 448 (2024)</div>
+                <a href="https://doi.org/10.1007/978-3-031-52969-6_14" target="_blank" class="pub-link">doi.org/10.1007/978-3-031-52969-6_14 →</a>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Copper sulfate treatment harms zooplankton and ultimately promotes algal blooms: A field mesocosm experiment</div>
+                <div class="pub-authors"><strong>Anantapantula, S.</strong>, et al.</div>
+                <div class="pub-venue">Harmful Algae, 142, 102800 (2025)</div>
+                <a href="https://doi.org/10.1016/j.hal.2025.102800" target="_blank" class="pub-link">doi.org/10.1016/j.hal.2025.102800 →</a>
+            </div>
+
+            <div class="publication">
+                <div class="pub-title">Gateway to Environmental Science and Engineering</div>
+                <div class="pub-authors"><strong>Anantapantula, S. S.</strong></div>
+                <div class="pub-venue">Kindle Direct Publishing (2023)</div>
+                <a href="https://a.co/d/fCctOMV" target="_blank" class="pub-link">amazon →</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

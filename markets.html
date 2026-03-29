@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markets — Saranya Anantapantula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e8e8e8;
+            --text-dim: #6a6a6a;
+            --accent: #ffffff;
+            --border: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 3rem;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .back:hover {
+            color: var(--text);
+        }
+
+        header {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item {
+            margin-bottom: 2.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .item-meta {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .item-org {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 300;
+        }
+
+        .item-desc ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .item-desc li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .item-desc li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            background: #1a1a1a;
+            border-radius: 2px;
+            margin-right: 0.4rem;
+            margin-top: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .awards {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .award {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .award-icon {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .award-text {
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .item-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">← back</a>
+
+        <header>
+            <h1>Markets</h1>
+            <p class="subtitle">Trading, quantitative research, and market structure</p>
+        </header>
+
+        <section>
+            <div class="section-title">Current</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Quantitative Analyst</span>
+                    <span class="item-meta">May 2025 – Present</span>
+                </div>
+                <div class="item-org">JS Trading, LLC (Remote)</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Systematizing discretionary macro strategies with backtesting tools, alternative data, and trading interfaces for Jason Shapiro</li>
+                        <li>Created a trend-following strategy with COT-based filters and a contrarian reversal strategy with a custom crowdedness indicator</li>
+                        <li>Coded strategies in Python and TradeStation, tuning signal thresholds via in-/out-of-sample testing and Monte Carlo simulations</li>
+                    </ul>
+                    <span class="tag">Python</span>
+                    <span class="tag">TradeStation</span>
+                    <span class="tag">COT Data</span>
+                    <span class="tag">Macro</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">WuWei Quant</span>
+                    <span class="item-meta">May 2025 – Present</span>
+                </div>
+                <div class="item-org">Personal Trading Portfolio</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Designed and traded semi-systematic strategies across equity and FICC futures using price action and COT positioning data</li>
+                        <li>Analyzing whether correlation breakdowns across equities, rates, and gold can be traded before mean reversion</li>
+                    </ul>
+                    <span class="tag">Futures</span>
+                    <span class="tag">Equities</span>
+                    <span class="tag">FICC</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Research</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Research Intern with Dr. Jessica Wachter</span>
+                    <span class="item-meta">Jan 2025 – Present</span>
+                </div>
+                <div class="item-org">University of Pennsylvania (funded by SPUR)</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Simulated stock and portfolio returns with jump-diffusion models, showing structural skewness, fat tails, and diversification limits</li>
+                        <li>Built a Monte Carlo framework showing sample kurtosis bias and systematic underestimation of tail risk in return distributions</li>
+                        <li>Analyzed CRSP and CBOE data to identify mispricing of tail risk in options, put-write strategies, and credit derivatives</li>
+                        <li>Linked market model failures to behavioral memory effects (recency, temporal clustering), driving persistent investor misbeliefs</li>
+                    </ul>
+                    <a href="https://github.com/anantapantulasa/unexpected_finance" target="_blank">GitHub repo →</a>
+                    <br>
+                    <span class="tag">Jump-Diffusion</span>
+                    <span class="tag">Monte Carlo</span>
+                    <span class="tag">Options</span>
+                    <span class="tag">Tail Risk</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Programs</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Citadel Securities Ignite Trading Program</span>
+                    <span class="item-meta">Winter 2026</span>
+                </div>
+                <div class="item-desc">
+                    Invite-only program focused on market making, trading simulations, and strategic decision-making.
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Virtu Financial Trading Winter Internship</span>
+                    <span class="item-meta">Winter 2026</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">WITG Quantitative Investment Strategies & Global Macro Analyst</span>
+                    <span class="item-meta">2024 – Present</span>
+                </div>
+                <div class="item-org">Wharton Investment Trading Group</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Wharton Analytics Fellows Senior Analyst</span>
+                    <span class="item-meta">2024 – Present</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Awards</div>
+            <div class="awards">
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">1st place — Citadel Securities Trading Competition (within Winternship)</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">1st place — Penn x Anthropic Hackathon, Trading Track</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building — Saranya Anantapantula</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e8e8e8;
+            --text-dim: #6a6a6a;
+            --accent: #ffffff;
+            --border: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.8rem;
+            margin-bottom: 3rem;
+            transition: color 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .back:hover {
+            color: var(--text);
+        }
+
+        header {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+            animation-delay: 0.1s;
+        }
+
+        h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        section:nth-of-type(1) { animation-delay: 0.2s; }
+        section:nth-of-type(2) { animation-delay: 0.3s; }
+        section:nth-of-type(3) { animation-delay: 0.4s; }
+        section:nth-of-type(4) { animation-delay: 0.5s; }
+        section:nth-of-type(5) { animation-delay: 0.6s; }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item {
+            margin-bottom: 2.5rem;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .item-meta {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .item-org {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 0.75rem;
+            font-style: italic;
+        }
+
+        .item-desc {
+            font-size: 0.85rem;
+            color: var(--text);
+            font-weight: 300;
+        }
+
+        .item-desc ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .item-desc li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .item-desc li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--text-dim);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            background: #1a1a1a;
+            border-radius: 2px;
+            margin-right: 0.4rem;
+            margin-top: 0.5rem;
+            color: var(--text-dim);
+        }
+
+        a {
+            color: var(--text);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent);
+        }
+
+        .awards-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .award {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .award-icon {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .award-text {
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .patent {
+            padding: 1rem;
+            background: #0f0f0f;
+            border-left: 2px solid #2a2a2a;
+            margin-bottom: 1rem;
+        }
+
+        .patent-title {
+            font-size: 0.9rem;
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        .patent-number {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .volunteer-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .volunteer-item {
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .volunteer-title {
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .volunteer-desc {
+            color: var(--text-dim);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @media (max-width: 600px) {
+            .item-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">← back</a>
+
+        <header>
+            <h1>Building</h1>
+            <p class="subtitle">Startups, patents, nonprofits, and impact</p>
+        </header>
+
+        <section>
+            <div class="section-title">Startups</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Aquality, LLC</span>
+                    <span class="item-meta">Aug 2022 – Aug 2024</span>
+                </div>
+                <div class="item-org">Founder & Engineer</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Created an autonomous robot and web application for algal bloom prediction and treatment recommendations</li>
+                        <li>Built decision trees, multi-linear regressions, and SVMs in Python to map water-quality profiles to optimal treatments</li>
+                        <li>Conducted field trials with Stroud Water Research Center and Paul Davis Landscaping</li>
+                        <li>Delivered working product to pilot clients</li>
+                        <li>Raised $15K+ from FMC Corporation, Drexel University, and SETAC</li>
+                    </ul>
+                    <a href="https://aquality.tech/" target="_blank">aquality.tech →</a>
+                    <br>
+                    <span class="tag">Python</span>
+                    <span class="tag">ML</span>
+                    <span class="tag">Arduino</span>
+                    <span class="tag">Hardware</span>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Niskinnovate</span>
+                    <span class="item-meta">2022 – Present</span>
+                </div>
+                <div class="item-org">Founder</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Developed an economical deep water sampling tool (Niskin Bottle) for low-budget research</li>
+                        <li>Fully funded operations to provide Niskinnovate at USESO Training Camp</li>
+                        <li>Conducted workshops at Spring-Ford Earth & STEM Club and citizen science organizations</li>
+                    </ul>
+                    <a href="https://niskinnovate.org" target="_blank">niskinnovate.org →</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Natural Water Filter</span>
+                    <span class="item-meta">2019 – 2020</span>
+                </div>
+                <div class="item-org">Inventor</div>
+                <div class="item-desc">
+                    Developed an economical water filtration system using natural materials (bio-film, activated carbon) for communities in rural areas. Helped a village near Chennai, India.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Patents</div>
+
+            <div class="patent">
+                <div class="patent-title">Aquality — Autonomous Water Quality Monitoring & Treatment System</div>
+                <div class="patent-number">Provisional Patent #63/437,904</div>
+            </div>
+
+            <div class="patent">
+                <div class="patent-title">Niskinnovate — Economical Deep Water Sampling Device</div>
+                <div class="patent-number">Patent Application #63/477,189</div>
+            </div>
+
+            <div class="patent">
+                <div class="patent-title">Natural Drinking Water Filter</div>
+                <div class="patent-number">Patent Application #75/289,415</div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Nonprofits & Media</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">4AGreenEnvironment</span>
+                    <span class="item-meta">Apr 2020 – Present</span>
+                </div>
+                <div class="item-org">Founder, 501(c)(3)</div>
+                <div class="item-desc">
+                    <ul>
+                        <li>Environmental science & sustainability education through multiple media channels</li>
+                        <li>The Green Blog, Women in Environmental Science podcast, 4AGreenEnvironment YouTube</li>
+                        <li>13K+ listeners across 112 countries</li>
+                        <li>Founded 500 Women Scientists Phoenixville Group</li>
+                        <li>Organized GreenGlobal eco-tech hackathon</li>
+                        <li>Featured speaker at American Philosophical Society "Women In Science" panel</li>
+                    </ul>
+                    <a href="https://youtu.be/_8f6cKwePtw" target="_blank">APS panel →</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">TEDxSpring-Ford</span>
+                    <span class="item-meta">2023 – 2024</span>
+                </div>
+                <div class="item-org">Founder & Organizer</div>
+                <div class="item-desc">
+                    Hosted events for students to present TED Talks. Connected students with public speaking mentors. 5 talks in 2023, 15 interested for 2024.
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Awards & Recognition</div>
+
+            <div class="awards-grid">
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">International Earth Science Olympiad — Gold & Silver medalist (past exam writer & head TA, mentored 2023 team to 2 Golds)</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">DECA International — 8th place, Startup Business Plan</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">Stockholm Jr. Water Prize — National 2nd place</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">Global Innovation Challenge — 1st place</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">World Aquaculture Society — 1st place Oral Presentation</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">International Genius Olympiad — Silver medalist</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">Battelle Climate Challenge — Top 10 Finalist</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">Delaware Valley Science Fair — 1st place Environmental Science (x2)</span>
+                </div>
+                <div class="award">
+                    <span class="award-icon">◆</span>
+                    <span class="award-text">Roy F. Weston Memorial Award — Scientific creativity</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">Teaching & Volunteering</div>
+
+            <div class="volunteer-grid">
+                <div class="volunteer-item">
+                    <div class="volunteer-title">Master Watershed Steward</div>
+                    <div class="volunteer-desc">Youngest certified (PennState Extension). Monitor Pickering Creek with Stroud Water Center. Initiated salt removal and tree planting.</div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-title">USESO Head Counselor & Exam Writer</div>
+                    <div class="volunteer-desc">Led 15+ workshops to 80 students on environmental research, engineering & entrepreneurship. Developed quiz app in 6 languages for international training.</div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-title">Teaching</div>
+                    <div class="volunteer-desc">Taught math to K-12 children in India. Designed Python, web dev, science & CAD curriculum for Boys and Girls Club, Homeschool Cooperative, Jamaica Cornerstone Collaborative.</div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-title">MathCounts Coach</div>
+                    <div class="volunteer-desc">Coached 40+ students. Connected students with math research professors.</div>
+                </div>
+                <div class="volunteer-item">
+                    <div class="volunteer-title">AP Chemistry Lab Assistant</div>
+                    <div class="volunteer-desc">Prepared lectures and lab experiments. Guided 50 students during lab periods.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
